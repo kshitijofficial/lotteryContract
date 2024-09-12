@@ -158,4 +158,5 @@ It has also been configured to have a productive dev experience out of the box i
  #   p y t h o n _ l o t t e r y _ c o n t r a c t  
  #   p y t h o n _ l o t t e r y _ c o n t r a c t  
  #   l o t t e r y C o n t r a c t  
+ #   l o t t e r y C o n t r a c t  
  
