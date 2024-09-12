@@ -56,9 +56,14 @@ def test_pick_winner(context: AlgopyTestContext)->None:
     participant_account_1 = context.any.account()
     participant_account_2 = context.any.account()
 
-    ledger.update_account(creator_account,initial_balance=10_000_000)
-    ledger.update_account(participant_account_1,initial_balance=100_000_000)
-    ledger.update_account(participant_account_2,initial_balance=10_000_000)
+    ledger.update_account(creator_account, min_balance=10_00_000,balance=1_00_000)
+    ledger.update_account(participant_account_2, min_balance=10_00_000,balance=1_00_000)
+    ledger.update_account(participant_account_1, min_balance=10_00_000,balance=10_00_000)
+    
+    print(f"Balance for account 1 after commit:", participant_account_1.balance)
+    print(f"Balance for account 2 after commit:", participant_account_2.balance)
+
+    assert participant_account_1.balance == participant_account_2.balance
    
     #assert participant_account_1.balance == participant_account_2.balance
     with context.txn.create_group(
