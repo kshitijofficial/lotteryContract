@@ -1,0 +1,114 @@
+{
+    "hints": {
+        "create_application(uint64)void": {
+            "call_config": {
+                "no_op": "CREATE"
+            }
+        },
+        "enter_lottery(pay)void": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        },
+        "pick_winner()void": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        },
+        "delete_application()void": {
+            "call_config": {
+                "delete_application": "CALL"
+            }
+        }
+    },
+    "source": {
+        "approval": "I3ByYWdtYSB2ZXJzaW9uIDEwCgpzbWFydF9jb250cmFjdHMubG90dGVyeS5jb250cmFjdC5Mb3R0ZXJ5LmFwcHJvdmFsX3Byb2dyYW06CiAgICBtZXRob2QgImNyZWF0ZV9hcHBsaWNhdGlvbih1aW50NjQpdm9pZCIKICAgIG1ldGhvZCAiZW50ZXJfbG90dGVyeShwYXkpdm9pZCIKICAgIG1ldGhvZCAicGlja193aW5uZXIoKXZvaWQiCiAgICBtZXRob2QgImRlbGV0ZV9hcHBsaWNhdGlvbigpdm9pZCIKICAgIHR4bmEgQXBwbGljYXRpb25BcmdzIDAKICAgIG1hdGNoIG1haW5fY3JlYXRlX2FwcGxpY2F0aW9uX3JvdXRlQDEgbWFpbl9lbnRlcl9sb3R0ZXJ5X3JvdXRlQDIgbWFpbl9waWNrX3dpbm5lcl9yb3V0ZUAzIG1haW5fZGVsZXRlX2FwcGxpY2F0aW9uX3JvdXRlQDQKICAgIGVyciAvLyByZWplY3QgdHJhbnNhY3Rpb24KCm1haW5fY3JlYXRlX2FwcGxpY2F0aW9uX3JvdXRlQDE6CiAgICB0eG4gT25Db21wbGV0aW9uCiAgICAhCiAgICBhc3NlcnQgLy8gT25Db21wbGV0aW9uIGlzIE5vT3AKICAgIHR4biBBcHBsaWNhdGlvbklECiAgICAhCiAgICBhc3NlcnQgLy8gaXMgY3JlYXRpbmcKICAgIHR4bmEgQXBwbGljYXRpb25BcmdzIDEKICAgIGJ0b2kKICAgIGNhbGxzdWIgY3JlYXRlX2FwcGxpY2F0aW9uCiAgICBpbnQgMQogICAgcmV0dXJuCgptYWluX2VudGVyX2xvdHRlcnlfcm91dGVAMjoKICAgIHR4biBPbkNvbXBsZXRpb24KICAgICEKICAgIGFzc2VydCAvLyBPbkNvbXBsZXRpb24gaXMgTm9PcAogICAgdHhuIEFwcGxpY2F0aW9uSUQKICAgIGFzc2VydCAvLyBpcyBub3QgY3JlYXRpbmcKICAgIHR4biBHcm91cEluZGV4CiAgICBpbnQgMQogICAgLQogICAgZHVwCiAgICBndHhucyBUeXBlRW51bQogICAgaW50IHBheQogICAgPT0KICAgIGFzc2VydCAvLyB0cmFuc2FjdGlvbiB0eXBlIGlzIHBheQogICAgY2FsbHN1YiBlbnRlcl9sb3R0ZXJ5CiAgICBpbnQgMQogICAgcmV0dXJuCgptYWluX3BpY2tfd2lubmVyX3JvdXRlQDM6CiAgICB0eG4gT25Db21wbGV0aW9uCiAgICAhCiAgICBhc3NlcnQgLy8gT25Db21wbGV0aW9uIGlzIE5vT3AKICAgIHR4biBBcHBsaWNhdGlvbklECiAgICBhc3NlcnQgLy8gaXMgbm90IGNyZWF0aW5nCiAgICBjYWxsc3ViIHBpY2tfd2lubmVyCiAgICBpbnQgMQogICAgcmV0dXJuCgptYWluX2RlbGV0ZV9hcHBsaWNhdGlvbl9yb3V0ZUA0OgogICAgdHhuIE9uQ29tcGxldGlvbgogICAgaW50IERlbGV0ZUFwcGxpY2F0aW9uCiAgICA9PQogICAgYXNzZXJ0IC8vIE9uQ29tcGxldGlvbiBpcyBEZWxldGVBcHBsaWNhdGlvbgogICAgdHhuIEFwcGxpY2F0aW9uSUQKICAgIGFzc2VydCAvLyBpcyBub3QgY3JlYXRpbmcKICAgIGNhbGxzdWIgZGVsZXRlX2FwcGxpY2F0aW9uCiAgICBpbnQgMQogICAgcmV0dXJuCgoKLy8gc21hcnRfY29udHJhY3RzLmxvdHRlcnkuY29udHJhY3QuTG90dGVyeS5jcmVhdGVfYXBwbGljYXRpb24oZW50cnlfZmVlOiB1aW50NjQpIC0+IHZvaWQ6CmNyZWF0ZV9hcHBsaWNhdGlvbjoKICAgIHByb3RvIDEgMAogICAgYnl0ZSAiZW50cnlfZmVlIgogICAgZnJhbWVfZGlnIC0xCiAgICBhcHBfZ2xvYmFsX3B1dAogICAgYnl0ZSAiY3JlYXRvcl9hZGRyZXNzIgogICAgZ2xvYmFsIENyZWF0b3JBZGRyZXNzCiAgICBhcHBfZ2xvYmFsX3B1dAogICAgYnl0ZSAidG90YWxfZW50cmllcyIKICAgIGludCAwCiAgICBhcHBfZ2xvYmFsX3B1dAogICAgcmV0c3ViCgoKLy8gc21hcnRfY29udHJhY3RzLmxvdHRlcnkuY29udHJhY3QuTG90dGVyeS5lbnRlcl9sb3R0ZXJ5KHBheW1lbnRfdHhuOiB1aW50NjQpIC0+IHZvaWQ6CmVudGVyX2xvdHRlcnk6CiAgICBwcm90byAxIDAKICAgIGZyYW1lX2RpZyAtMQogICAgZ3R4bnMgUmVjZWl2ZXIKICAgIGdsb2JhbCBDdXJyZW50QXBwbGljYXRpb25BZGRyZXNzCiAgICA9PQogICAgYXNzZXJ0CiAgICBmcmFtZV9kaWcgLTEKICAgIGd0eG5zIEFtb3VudAogICAgaW50IDAKICAgIGJ5dGUgImVudHJ5X2ZlZSIKICAgIGFwcF9nbG9iYWxfZ2V0X2V4CiAgICBhc3NlcnQgLy8gY2hlY2sgc2VsZi5lbnRyeV9mZWUgZXhpc3RzCiAgICA9PQogICAgYXNzZXJ0CiAgICBpbnQgMAogICAgYnl0ZSAidG90YWxfZW50cmllcyIKICAgIGFwcF9nbG9iYWxfZ2V0X2V4CiAgICBhc3NlcnQgLy8gY2hlY2sgc2VsZi50b3RhbF9lbnRyaWVzIGV4aXN0cwogICAgaW50IDEKICAgICsKICAgIGJ5dGUgInRvdGFsX2VudHJpZXMiCiAgICBzd2FwCiAgICBhcHBfZ2xvYmFsX3B1dAogICAgcmV0c3ViCgoKLy8gc21hcnRfY29udHJhY3RzLmxvdHRlcnkuY29udHJhY3QuTG90dGVyeS5waWNrX3dpbm5lcigpIC0+IHZvaWQ6CnBpY2tfd2lubmVyOgogICAgcHJvdG8gMCAwCiAgICB0eG4gU2VuZGVyCiAgICBpbnQgMAogICAgYnl0ZSAiY3JlYXRvcl9hZGRyZXNzIgogICAgYXBwX2dsb2JhbF9nZXRfZXgKICAgIGFzc2VydCAvLyBjaGVjayBzZWxmLmNyZWF0b3JfYWRkcmVzcyBleGlzdHMKICAgID09CiAgICBhc3NlcnQKICAgIGludCAwCiAgICBieXRlICJ0b3RhbF9lbnRyaWVzIgogICAgYXBwX2dsb2JhbF9nZXRfZXgKICAgIGFzc2VydCAvLyBjaGVjayBzZWxmLnRvdGFsX2VudHJpZXMgZXhpc3RzCiAgICBhc3NlcnQKICAgIGdsb2JhbCBHcm91cFNpemUKICAgIGdsb2JhbCBSb3VuZAogICAgaW50IDAKICAgIGJ5dGUgInRvdGFsX2VudHJpZXMiCiAgICBhcHBfZ2xvYmFsX2dldF9leAogICAgYXNzZXJ0IC8vIGNoZWNrIHNlbGYudG90YWxfZW50cmllcyBleGlzdHMKICAgICUKICAgIHN3YXAKICAgICUKICAgIGd0eG5zIFNlbmRlcgogICAgaXR4bl9iZWdpbgogICAgZ2xvYmFsIEN1cnJlbnRBcHBsaWNhdGlvbkFkZHJlc3MKICAgIGFjY3RfcGFyYW1zX2dldCBBY2N0QmFsYW5jZQogICAgYXNzZXJ0IC8vIGFjY291bnQgZnVuZGVkCiAgICBpbnQgMTAwMDAwMAogICAgLQogICAgaXR4bl9maWVsZCBBbW91bnQKICAgIGl0eG5fZmllbGQgUmVjZWl2ZXIKICAgIGludCBwYXkKICAgIGl0eG5fZmllbGQgVHlwZUVudW0KICAgIGludCAxMDAwCiAgICBpdHhuX2ZpZWxkIEZlZQogICAgaXR4bl9zdWJtaXQKICAgIHJldHN1YgoKCi8vIHNtYXJ0X2NvbnRyYWN0cy5sb3R0ZXJ5LmNvbnRyYWN0LkxvdHRlcnkuZGVsZXRlX2FwcGxpY2F0aW9uKCkgLT4gdm9pZDoKZGVsZXRlX2FwcGxpY2F0aW9uOgogICAgcHJvdG8gMCAwCiAgICB0eG4gU2VuZGVyCiAgICBpbnQgMAogICAgYnl0ZSAiY3JlYXRvcl9hZGRyZXNzIgogICAgYXBwX2dsb2JhbF9nZXRfZXgKICAgIGFzc2VydCAvLyBjaGVjayBzZWxmLmNyZWF0b3JfYWRkcmVzcyBleGlzdHMKICAgID09CiAgICBhc3NlcnQKICAgIGl0eG5fYmVnaW4KICAgIGludCAwCiAgICBieXRlICJjcmVhdG9yX2FkZHJlc3MiCiAgICBhcHBfZ2xvYmFsX2dldF9leAogICAgYXNzZXJ0IC8vIGNoZWNrIHNlbGYuY3JlYXRvcl9hZGRyZXNzIGV4aXN0cwogICAgaW50IDAKICAgIGJ5dGUgImNyZWF0b3JfYWRkcmVzcyIKICAgIGFwcF9nbG9iYWxfZ2V0X2V4CiAgICBhc3NlcnQgLy8gY2hlY2sgc2VsZi5jcmVhdG9yX2FkZHJlc3MgZXhpc3RzCiAgICBpdHhuX2ZpZWxkIENsb3NlUmVtYWluZGVyVG8KICAgIGludCAwCiAgICBpdHhuX2ZpZWxkIEFtb3VudAogICAgaXR4bl9maWVsZCBSZWNlaXZlcgogICAgaW50IHBheQogICAgaXR4bl9maWVsZCBUeXBlRW51bQogICAgaW50IDEwMDAKICAgIGl0eG5fZmllbGQgRmVlCiAgICBpdHhuX3N1Ym1pdAogICAgcmV0c3ViCg==",
+        "clear": "I3ByYWdtYSB2ZXJzaW9uIDEwCgpzbWFydF9jb250cmFjdHMubG90dGVyeS5jb250cmFjdC5Mb3R0ZXJ5LmNsZWFyX3N0YXRlX3Byb2dyYW06CiAgICBpbnQgMQogICAgcmV0dXJuCg=="
+    },
+    "state": {
+        "global": {
+            "num_byte_slices": 1,
+            "num_uints": 2
+        },
+        "local": {
+            "num_byte_slices": 0,
+            "num_uints": 0
+        }
+    },
+    "schema": {
+        "global": {
+            "declared": {
+                "creator_address": {
+                    "type": "bytes",
+                    "key": "creator_address"
+                },
+                "entry_fee": {
+                    "type": "uint64",
+                    "key": "entry_fee"
+                },
+                "total_entries": {
+                    "type": "uint64",
+                    "key": "total_entries"
+                }
+            },
+            "reserved": {}
+        },
+        "local": {
+            "declared": {},
+            "reserved": {}
+        }
+    },
+    "contract": {
+        "name": "Lottery",
+        "methods": [
+            {
+                "name": "create_application",
+                "args": [
+                    {
+                        "type": "uint64",
+                        "name": "entry_fee"
+                    }
+                ],
+                "readonly": false,
+                "returns": {
+                    "type": "void"
+                },
+                "desc": "Initialize the lottery contract with an entry fee."
+            },
+            {
+                "name": "enter_lottery",
+                "args": [
+                    {
+                        "type": "pay",
+                        "name": "payment_txn"
+                    }
+                ],
+                "readonly": false,
+                "returns": {
+                    "type": "void"
+                },
+                "desc": "Allow users to enter the lottery by sending the entry fee."
+            },
+            {
+                "name": "pick_winner",
+                "args": [],
+                "readonly": false,
+                "returns": {
+                    "type": "void"
+                },
+                "desc": "Allows the contract creator to randomly pick a winner."
+            },
+            {
+                "name": "delete_application",
+                "args": [],
+                "readonly": false,
+                "returns": {
+                    "type": "void"
+                },
+                "desc": "Allows the creator to delete the application."
+            }
+        ],
+        "networks": {}
+    },
+    "bare_call_config": {}
+}

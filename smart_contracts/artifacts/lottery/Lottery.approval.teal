@@ -1,0 +1,177 @@
+#pragma version 10
+
+smart_contracts.lottery.contract.Lottery.approval_program:
+    method "create_application(uint64)void"
+    method "enter_lottery(pay)void"
+    method "pick_winner()void"
+    method "delete_application()void"
+    txna ApplicationArgs 0
+    match main_create_application_route@1 main_enter_lottery_route@2 main_pick_winner_route@3 main_delete_application_route@4
+    err // reject transaction
+
+main_create_application_route@1:
+    txn OnCompletion
+    !
+    assert // OnCompletion is NoOp
+    txn ApplicationID
+    !
+    assert // is creating
+    txna ApplicationArgs 1
+    btoi
+    callsub create_application
+    int 1
+    return
+
+main_enter_lottery_route@2:
+    txn OnCompletion
+    !
+    assert // OnCompletion is NoOp
+    txn ApplicationID
+    assert // is not creating
+    txn GroupIndex
+    int 1
+    -
+    dup
+    gtxns TypeEnum
+    int pay
+    ==
+    assert // transaction type is pay
+    callsub enter_lottery
+    int 1
+    return
+
+main_pick_winner_route@3:
+    txn OnCompletion
+    !
+    assert // OnCompletion is NoOp
+    txn ApplicationID
+    assert // is not creating
+    callsub pick_winner
+    int 1
+    return
+
+main_delete_application_route@4:
+    txn OnCompletion
+    int DeleteApplication
+    ==
+    assert // OnCompletion is DeleteApplication
+    txn ApplicationID
+    assert // is not creating
+    callsub delete_application
+    int 1
+    return
+
+
+// smart_contracts.lottery.contract.Lottery.create_application(entry_fee: uint64) -> void:
+create_application:
+    proto 1 0
+    byte "entry_fee"
+    frame_dig -1
+    app_global_put
+    byte "creator_address"
+    global CreatorAddress
+    app_global_put
+    byte "total_entries"
+    int 0
+    app_global_put
+    retsub
+
+
+// smart_contracts.lottery.contract.Lottery.enter_lottery(payment_txn: uint64) -> void:
+enter_lottery:
+    proto 1 0
+    frame_dig -1
+    gtxns Receiver
+    global CurrentApplicationAddress
+    ==
+    assert
+    frame_dig -1
+    gtxns Amount
+    int 0
+    byte "entry_fee"
+    app_global_get_ex
+    assert // check self.entry_fee exists
+    ==
+    assert
+    int 0
+    byte "total_entries"
+    app_global_get_ex
+    assert // check self.total_entries exists
+    int 1
+    +
+    byte "total_entries"
+    swap
+    app_global_put
+    retsub
+
+
+// smart_contracts.lottery.contract.Lottery.pick_winner() -> void:
+pick_winner:
+    proto 0 0
+    txn Sender
+    int 0
+    byte "creator_address"
+    app_global_get_ex
+    assert // check self.creator_address exists
+    ==
+    assert
+    int 0
+    byte "total_entries"
+    app_global_get_ex
+    assert // check self.total_entries exists
+    assert
+    global GroupSize
+    global Round
+    int 0
+    byte "total_entries"
+    app_global_get_ex
+    assert // check self.total_entries exists
+    %
+    swap
+    %
+    gtxns Sender
+    itxn_begin
+    global CurrentApplicationAddress
+    acct_params_get AcctBalance
+    assert // account funded
+    int 1000000
+    -
+    itxn_field Amount
+    itxn_field Receiver
+    int pay
+    itxn_field TypeEnum
+    int 1000
+    itxn_field Fee
+    itxn_submit
+    retsub
+
+
+// smart_contracts.lottery.contract.Lottery.delete_application() -> void:
+delete_application:
+    proto 0 0
+    txn Sender
+    int 0
+    byte "creator_address"
+    app_global_get_ex
+    assert // check self.creator_address exists
+    ==
+    assert
+    itxn_begin
+    int 0
+    byte "creator_address"
+    app_global_get_ex
+    assert // check self.creator_address exists
+    int 0
+    byte "creator_address"
+    app_global_get_ex
+    assert // check self.creator_address exists
+    itxn_field CloseRemainderTo
+    int 0
+    itxn_field Amount
+    itxn_field Receiver
+    int pay
+    itxn_field TypeEnum
+    int 1000
+    itxn_field Fee
+    itxn_submit
+    retsub
