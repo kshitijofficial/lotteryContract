@@ -70,7 +70,7 @@ def test_pick_winner(context: AlgopyTestContext)->None:
     contract.create_application(entry_fee)
     print(f"Entery after commit:", contract.entry_fee)
 
-    payment_txn=context.any.txn.payment(receiver=app_id.address, amount=UInt64(1_000_00))
+    payment_txn=context.any.txn.payment(receiver=app_id.address, amount=UInt64(1_000_000))
 
     # Call the enter_lottery method with the payment transaction
     contract.enter_lottery(payment_txn=payment_txn)
