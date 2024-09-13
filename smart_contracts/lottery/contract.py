@@ -49,7 +49,7 @@ class Lottery(ARC4Contract):
         assert payment_txn.amount == self.entry_fee
         
         self.total_entries += UInt64(1)
-
+        
     @arc4.abimethod
     def pick_winner(self) ->None:
         """

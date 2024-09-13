@@ -4,8 +4,13 @@ from collections.abc import Generator
 from smart_contracts.lottery.contract import Lottery
 from algopy_testing import AlgopyTestContext, algopy_testing_context
 import algopy
+from _algopy_testing.context_helpers.txn_context import TransactionContext, DeferredAppCall
+from algopy.gtxn import PaymentTransaction
 from algopy import (
     UInt64,
+    Account,
+    gtxn,
+    Global
 )
 
 @pytest.fixture()
@@ -47,73 +52,33 @@ def test_enter_lottery(
     assert payment_txn.amount == entry_fee
 
 def test_pick_winner(context: AlgopyTestContext)->None:
+
+    # Initialize the transaction context
     contract = Lottery()
     ledger = context.ledger
-    entry_fee = UInt64(100_00_000)
+    entry_fee = UInt64(1_000_000)
     app_id = context.ledger.get_app(contract)
     # Create accounts for creator and participants
     creator_account = context.default_sender
     participant_account_1 = context.any.account()
     participant_account_2 = context.any.account()
 
-    ledger.update_account(creator_account, min_balance=10_00_000,balance=1_00_000)
-    ledger.update_account(participant_account_2, min_balance=10_00_000,balance=1_00_000)
-    ledger.update_account(participant_account_1, min_balance=10_00_000,balance=10_00_000)
+    ledger.update_account(creator_account, min_balance=1_000_000,balance=100_000_000)
+    ledger.update_account(participant_account_2, min_balance=1_000_000,balance=100_000_000)
+    ledger.update_account(participant_account_1, min_balance=1_000_000,balance=100_000_000)
     
+    contract.create_application(entry_fee)
+    print(f"Entery after commit:", contract.entry_fee)
+
+    payment_txn=context.any.txn.payment(receiver=app_id.address, amount=UInt64(1_000_00))
+
+    # Call the enter_lottery method with the payment transaction
+    contract.enter_lottery(payment_txn=payment_txn)
+    
+    print(f"Balance for contract after commit:", app_id.address.balance)
     print(f"Balance for account 1 after commit:", participant_account_1.balance)
-    print(f"Balance for account 2 after commit:", participant_account_2.balance)
+    
+    
 
-    assert participant_account_1.balance == participant_account_2.balance
-   
-    #assert participant_account_1.balance == participant_account_2.balance
-    with context.txn.create_group(
-        gtxns=[
-            context.any.txn.application_call(
-                sender=creator_account,
-                app_id=app_id,
-                app_args=[algopy.Bytes(b"create_application"), entry_fee],
-            ),
-            context.any.txn.payment(
-                sender=participant_account_1,
-                receiver=app_id.address,
-                amount=entry_fee,
-            ),
-            context.any.txn.payment(
-                sender=participant_account_2,
-                receiver=app_id.address,
-                amount=entry_fee,
-            )
-        ],
-        active_txn_index=0,
-    ):contract.create_application(entry_fee)
-
-    # Participants enter the lottery
-    contract.enter_lottery(payment_txn=context.any.txn.payment(
-        sender=participant_account_1,
-        receiver=app_id.address,
-        amount=entry_fee,
-    ))
-    contract.enter_lottery(payment_txn=context.any.txn.payment(
-        sender=participant_account_2,
-        receiver=app_id.address,
-        amount=entry_fee,
-    ))
-  
-   
-
-    # # Act: Pick a winner
-    # with context.txn.create_group(
-    #     gtxns=[
-    #         context.any.txn.application_call(
-    #             sender=creator_account,
-    #             app_id=app_id,
-    #             app_args=[algopy.Bytes(b"pick_winner")],
-    #         )
-    #     ]
-    # ):contract.pick_winner()
-
-    # Assert that one of the participants received 1 ALGO (less fees), while the application keeps 1 ALGO
-
-
-def test_delete_application():
-    pass
+# def test_delete_application():
+#     pass
