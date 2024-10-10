@@ -17,7 +17,7 @@ The Lottery contract allows participants to enter a lottery by paying a specifie
 
 Ensure that you have the following dependencies:
 
-[AlgoKit](https://algorand.co/algokit?utm_source=youtube&utm_medium=youtube&utm_campaign=codeeateryard&utm_content=download)
+- [AlgoKit](https://algorand.co/algokit?utm_source=youtube&utm_medium=youtube&utm_campaign=codeeateryard&utm_content=download)
 
 ## Contract Structure
 
