@@ -21,7 +21,7 @@ Ensure that you have the following dependencies:
 
 ## Contract Structure
 
-- **`Lottery` Contract**: The main contract that manages the lottery's state and logic.
+- **Lottery Contract**: The main contract that manages the lottery's state and logic.
 - **Methods**:
   - `create_application`: Initializes the contract with an entry fee.
   - `enter_lottery`: Allows participants to enter the lottery by making a payment.
